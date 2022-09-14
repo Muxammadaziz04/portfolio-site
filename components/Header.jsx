@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
+import { useEffect } from 'react';
 import Typed from 'react-typed';
 
 import styles from '../styles/Header.module.scss'
@@ -6,17 +7,11 @@ import styles from '../styles/Header.module.scss'
 const Header = () => {
     const circleVariant = {
         initial: ({ scale = 1 }) => ({ scale, opacity: 0 }),
-        animate: ({ time, delay = 0 }) => ({ scale: 1, opacity: 1, transition: { duration: time, delay } })
-    }
-
-    const func = () => {
-        const audio = new Audio('text_audio.mp3');
-        audio.volume = 1
-        audio.play()
+        animate: ({ time, delay = 0 }) => ({ scale: 1, opacity: 1, transition: { duration: time, delay, type: "spring" } })
     }
 
     return (
-        <header className={styles.header + " container"}>
+        <header className={styles.header + " container section"} key={1}>
             <motion.div
                 className={styles.header__circle}
                 initial='initial'
@@ -48,18 +43,18 @@ const Header = () => {
                     ></motion.div>
                 </div>
             </motion.div>
-            <span className={styles.header__text} onClick={func}>
-            <Typed
-                    strings={['Hello ! <br /> I\'m FullStack developer from tashkent']}
-                    onStringTyped={() => {
-                        const audio = new Audio('text_audio.mp3');
-                        audio.volume = 1
-                        audio.play()
-                    }}
-                    startDelay={1000}
-                    typeSpeed={40}
+            <motion.span
+                className={styles.header__text}
+                initial={{opacity: 0, translateX: -300}}
+                animate={{opacity: 1, translateX: 0}}
+                transition={{duration: 0.5, delay: 1.5}}
+            >
+                <Typed
+                    strings={['<span>Hello !</span> <br />  I\'m FullStack developer from Tashkent']}
+                    startDelay={2300}
+                    typeSpeed={60}
                 />
-            </span>
+            </motion.span>
         </header>
     );
 }

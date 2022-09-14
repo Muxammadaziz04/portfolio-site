@@ -1,0 +1,28 @@
+.about{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__text{
+        max-width: 45%;
+        & > h1{
+            font-size: 55px;
+            line-height: 130%;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+        & > p {
+            font-size: 22px;
+            line-height: 130%;
+            letter-spacing: 1.5px;
+        }
+    }
+
+    &__img{
+        display: block;
+        width: 48%;
+        aspect-ratio: 16 / 9;
+    }
+}
