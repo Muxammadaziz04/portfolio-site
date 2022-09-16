@@ -1,19 +1,49 @@
 .projects{
-    width: 100%;
-    height: 100vh;
+    width: 100%;    
+    padding: 67px 0;
+    display: flex;
+    flex-direction: column;
 
-    &__card{
-        width: 100%;
-        padding: 67px 0;
+    &__slider{
         display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        column-gap: 50px;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        padding: 0 50%;
+        scroll-behavior: smooth;
 
-        &__img{
-            display: block;
-            width: 48%;
-            aspect-ratio: 16 / 9;
+        &__btns{
+            width: 100%;
+            padding-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 30px;
+
+            & > button{
+                padding: 10px 30px;
+                font-size: 18px;
+                background: #642CDA;
+                border-radius: 8px;
+                color: white;
+
+                &:active{
+                    background: #5100ff;
+                }
+            }
         }
+
+        &::-webkit-scrollbar{
+            width: 0;
+        }
+    }
+
+    &__info {
+        width:50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 15px;
     }
 }

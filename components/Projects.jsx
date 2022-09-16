@@ -1,27 +1,32 @@
-import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+
+import ProjectCard from './ProjectCard';
 
 import styles from '../styles/Projects.module.scss'
+import ProjectInfo from './ProjectInfo';
 
-const Projects = () => {
+const Projects = ({ data }) => {
+    const sliderRef = useRef()
+    const [slide, setSlide] = useState(1)
+    
     return (
         <div className={styles.projects + " container"}>
-            <div className={styles.projects__card}>
-                <span className={styles.projects__card__img}>
-                    <Image
-                    width='100%'
-                    height='100%'
-                    objectFit='cover'
-                        layout='fill'
-                
-                        src='https://images.unsplash.com/photo-1663050005090-86b77b8c01e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60'
-                        alt='project image'
-                    />
-                </span>
-                <span className={styles.projects__card__img}>
-                    <h2>Nombre del Proyecto</h2>
-                    <p>Breve descripcion del proyecto, amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-                </span>
-            </div>
+            <span className={styles.projects__slider} ref={sliderRef}>
+                {
+                    data && data.map((project, index) => <ProjectCard project={project} index={index} slide={slide} key={index} />)
+                }
+            </span>
+            <span className={styles.projects__slider__btns}>
+                <button onClick={() => setSlide(state => state > 1 ? state - 1 : data.length)}>Prev</button>
+                <button onClick={() => setSlide(state => state < data.length ? state + 1 : 1)}>Next</button>
+            </span>
+            <span className={styles.projects__info}>
+                {
+                    data && data[slide - 1] && (
+                        <ProjectInfo project={data[slide - 1]} />
+                    )
+                }
+            </span>
         </div>
     );
 }

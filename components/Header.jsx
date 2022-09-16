@@ -1,10 +1,9 @@
-import { motion, useScroll } from 'framer-motion';
-import { useEffect } from 'react';
 import Typed from 'react-typed';
+import { motion } from 'framer-motion';
 
 import styles from '../styles/Header.module.scss'
 
-const Header = () => {
+const Header = ({data}) => {
     const circleVariant = {
         initial: ({ scale = 1 }) => ({ scale, opacity: 0 }),
         animate: ({ time, delay = 0 }) => ({ scale: 1, opacity: 1, transition: { duration: time, delay, type: "spring" } })
@@ -50,7 +49,7 @@ const Header = () => {
                 transition={{duration: 0.5, delay: 1.5}}
             >
                 <Typed
-                    strings={['<span>Hello !</span> <br />  I\'m FullStack developer from Tashkent']}
+                    strings={[`<span>${data.title}</span> <br />  ${data.description}`]}
                     startDelay={2300}
                     typeSpeed={60}
                 />

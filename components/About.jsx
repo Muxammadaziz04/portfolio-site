@@ -1,35 +1,35 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-
-import carbon from '../Assets/Img/carbon.svg'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import styles from '../styles/About.module.scss'
 
-const About = () => {
+const About = ({data}) => {
     const imgVariants = {
         offscreen: { opacity: 0, scale: 6 },
         onscreen: { opacity: 1, scale: 1}
     }
+
     return (
         <section className={styles.about + ' container section'} key={2}>
             <span className={styles.about__text}>
                 <h1>About me</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur perspiciatis sit placeat, deleniti, laboriosam voluptatum, ad eveniet magnam voluptates nihil cupiditate facilis. Quasi voluptas corrupti ratione ad doloremque suscipit culpa.</p>
+                <p>{documentToReactComponents(data.description)}</p>
             </span>
-            <motion.span
+            <span
                 className={styles.about__img}
                 initial='offscreen'
                 whileInView='onscreen'
-                
             >
-                <motion.span variants={imgVariants}>
                     <Image
+                        height='100%'
+                        width='100%'
+                        layout='fill'
                         objectFit='cover'
-                        src={carbon}
+                        src={'https://' + data?.image?.fields?.file?.url}
                         alt="info about me"
                     />
-                </motion.span>
-            </motion.span>
+            </span>
         </section>
     );
 }
