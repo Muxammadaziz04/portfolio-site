@@ -18,12 +18,8 @@ const About = ({data}) => {
             </span>
             <span
                 className={styles.about__img}
-                initial='offscreen'
-                whileInView='onscreen'
             >
                     <Image
-                        height='100%'
-                        width='100%'
                         layout='fill'
                         objectFit='cover'
                         src={'https://' + data?.image?.fields?.file?.url}

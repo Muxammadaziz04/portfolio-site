@@ -36,3 +36,13 @@
         }
     }
 }
+
+@media (max-width:588px) {
+    .contacts__contact > a{
+        font-size: 22px;
+
+        &:nth-child(2){
+            font-size: 14px;
+        }
+    }
+}

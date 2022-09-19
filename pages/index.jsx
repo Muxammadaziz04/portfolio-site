@@ -1,9 +1,10 @@
+import ReactPageScroller from 'react-page-scroller'
+
 import About from '../components/About'
 import Header from '../components/Header'
-import ReactPageScroller from 'react-page-scroller'
 import Projects from '../components/Projects'
+import Contacts from '../components/Contacts' 
 import client from '../contentful'
-import Contacts from '../components/Contacts'
 
 export async function getServerSideProps() {
   const home = await client.getEntries({content_type: 'home', limit: 1})
@@ -26,7 +27,6 @@ export async function getServerSideProps() {
 }
 
 export default function Home({home, about, projects, contacts}) {
-
   return (
     <ReactPageScroller>
       <Header data={home} />

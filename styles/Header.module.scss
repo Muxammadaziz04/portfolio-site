@@ -7,9 +7,18 @@
     position: relative;
     z-index: 2;
 
-    &__circle {
+    &__wrapper{
+        padding: 5%;
         width: 754px;
         height: 754px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__circle {
+        width: 100%;
+        aspect-ratio: 1 / 1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -41,8 +50,8 @@
         }
 
         &__body {
-            width: 428px;
-            height: 428px;
+            width: 56%;
+            height: 56%;
             border-radius: 50%;
             background: linear-gradient(0deg, #6200ff, #e100ff);
         }
@@ -50,36 +59,37 @@
         &__child {
             position: absolute;
             display: block;
-            width: 54px;
-            height: 54px;
+            width: 9%;
+            height: 9%;
             border-radius: 50%;
             background: linear-gradient(210deg, #6200ff, #e100ff);
             animation: rotateLine 2s linear infinite;
             z-index: 5;
 
             &:nth-child(1) {
-                top: -68px;
-                left: 35px;
+                top: -10%;
+                left: 6%;
             }
 
             &:nth-child(2) {
-                bottom: 135px;
+                bottom: 18%;
                 left: 100%;
             }
 
             &:nth-child(3) {
-                bottom: 20px;
-                left: -54px;
+                bottom: 3%;
+                left: -7%;
             }
 
             &:nth-child(4) {
                 top: 0;
-                left: calc(100% - 27px);
+                left: 96%;
             }
         }
     }
 
     &__text {
+        padding-left: 20px;
         position: absolute;
         top: 50%;
         left: 0;
@@ -103,5 +113,61 @@
 
     100% {
         transform: rotate(-360deg);
+    }
+}
+
+@media (max-width:1020px) {
+    .header{
+        &_wrapper{
+            padding: 9%;
+        }
+        &__text {
+            &>span>span {
+                font-size: 25px;
+                & > span {
+                    font-size: 100px;
+                    line-height: 130px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:800px) {
+    .header{
+        &__wrapper{
+            padding: 10%;
+        }
+    }
+}
+
+@media (max-width:580px) {
+    .header{
+        &__wrapper{
+            padding: 10%;
+        }
+        &__text {
+            &>span>span {
+                font-size: 19px;
+                & > span {
+                    font-size: 70px;
+                    line-height: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:375px) {
+    .header{
+        &__text {
+            &>span>span {
+                font-size: 16px;
+                & > span {
+                    font-size: 50px;
+                    line-height: 100%;
+                }
+            }
+        }
     }
 }

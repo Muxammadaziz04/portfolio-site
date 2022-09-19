@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
 import styles from '../styles/ProjectCard.module.scss'
@@ -19,16 +18,18 @@ const ProjectCard = ({project, index, slide}) => {
 
     return (
             <div className={styles.card} ref={cardRef}>
-                <motion.div 
+                <div 
                     className={styles.card__img + " " + `${index + 1 === slide ? '' : `${ index + 1 > slide ? styles.right : styles.left}`}`}
                 >
                     <Image  
+                        width='100%'
+                        height='100%'
                         layout='fill'
                         objectFit='cover'
                         src={'https:' + project.fields.project_image.fields.file.url}
                         alt='project image'
                     />
-                </motion.div>
+                </div>
             </div>
     );
 }
