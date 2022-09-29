@@ -3,17 +3,17 @@ import { useEffect, useRef } from 'react';
 
 import styles from '../styles/ProjectCard.module.scss'
 
-const ProjectCard = ({project, index, slide}) => {
+const ProjectCard = ({project, index, slide, inView}) => {
     const cardRef = useRef()
     
     useEffect(() => {
-        // if(index + 1 === slide){
-        //     cardRef.current?.scrollIntoView({
-        //         behavior: 'auto',
-        //         block: 'center',
-        //         inline: 'center'
-        //     })
-        // }
+        if(index + 1 === slide && inView){
+            cardRef.current?.scrollIntoView({
+                behavior: 'auto',
+                block: 'center',
+                inline: 'center'
+            })
+        }
     }, [slide])
 
     return (
